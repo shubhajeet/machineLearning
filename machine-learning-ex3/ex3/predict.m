@@ -21,14 +21,12 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
-
-
-
-
-
-
-
-
+A = [ones(size(X,1),1) X];
+A = Theta1*A';
+A = [ones(1,size(A,2)); A];
+p = (Theta2*A)';
+[max_prob p] = max(p,[],2);
+p = p .* (p != 10);
 % =========================================================================
 
 
