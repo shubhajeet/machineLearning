@@ -22,9 +22,9 @@ p = zeros(size(X, 1), 1);
 %
 
 A = [ones(size(X,1),1) X];
-A = Theta1*A';
+A = sigmoid(Theta1*A');
 A = [ones(1,size(A,2)); A];
-p = (Theta2*A)';
+p = sigmoid((Theta2*A)');
 [max_prob p] = max(p,[],2);
 p = p .* (p != 10);
 % =========================================================================
