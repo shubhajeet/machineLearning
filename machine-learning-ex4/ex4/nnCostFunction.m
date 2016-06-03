@@ -63,8 +63,10 @@ Theta2_grad = zeros(size(Theta2));
 %
 iLayer = [ones(length(X),1) X];
 hLayer = sigmoid(iLayer * Theta1');
+
 hLayer = [ones(length(hLayer),1) hLayer];
 h = sigmoid(hLayer * Theta2');
+
 Y = [y==1];
 for i = 2:1:num_labels
   Y = [Y y==i];
