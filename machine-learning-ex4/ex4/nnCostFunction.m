@@ -61,26 +61,21 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% -------------------------------------------------------------
+iLayer = [ones(length(X),1) X];
+hLayer = sigmoid(iLayer * Theta1');
+hLayer = [ones(length(hLayer),1) hLayer];
+h = sigmoid(hLayer * Theta2');
+Y = [y==1];
+for i = 2:1:num_labels
+  Y = [Y y==i];
+endfor
+J = -Y .* log(h) - (ones(size(Y))-Y) .* log(ones(size(h))-h);
+J = sum(sum(J));
+J = J/m;
+Theta1(:,1) = zeros(size(Theta1,1),1);
+Theta2(:,1) = zeros(size(Theta2,1),1);
+J = J + lambda/2/m * (sum(sum(Theta1.*Theta1)) + sum(sum(Theta2.*Theta2)));
+% ---------------- ---------------------------------------------
 
 % =========================================================================
 
