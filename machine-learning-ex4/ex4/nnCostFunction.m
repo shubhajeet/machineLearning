@@ -105,7 +105,9 @@ Theta2_grad = Delta_2./m;
 Theta1(:,1) = zeros(size(Theta1,1),1);
 Theta2(:,1) = zeros(size(Theta2,1),1);
 J = J + lambda/2/m * (sum(sum(Theta1.*Theta1)) + sum(sum(Theta2.*Theta2)));
-% ---------------- ---------------------------------------------
+Theta1_grad += lambda.*Theta1./m;
+Theta2_grad += lambda.*Theta2./m;
+% -------------------------------------------------------------
 
 % =========================================================================
 
